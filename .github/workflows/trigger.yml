@@ -51,6 +51,7 @@ jobs:
         name: logging enabled
         run: |
           echo '${{github.event.inputs.logLevel == 'warning' }}'
+          echo 'warning job enabled and pipeline completed'
   # testing stage
   test:
     runs-on: ubuntu-latest
