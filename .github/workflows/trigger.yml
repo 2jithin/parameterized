@@ -1,6 +1,7 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: ContinousTesting
+run-name: ${{ github.actor }} is understanding GitHub Actions
 
 # Controls when the workflow will run
 on:
@@ -52,3 +53,13 @@ jobs:
         name: logging enabled
         run: |
           echo '${{github.event.inputs.logLevel == 'warning' }}'
+  # testing stage
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/setup-node@v3
+        with:
+          node-version: '14'
+      - run: npm install -g bats
+      - run: bats -v
+      
