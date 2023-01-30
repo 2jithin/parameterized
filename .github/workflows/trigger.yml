@@ -22,9 +22,7 @@ on:
       logLevel:
         description: 'create log level'
         required: true
-        default: 'warning'
-      tags:
-        description: 'test scenarios'       
+        default: 'warning'      
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
