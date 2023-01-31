@@ -7,12 +7,41 @@ pipeline {
         buildDiscarder(logRotator(numToKeepStr: '5'))
         }
     stages {
-        stage('Parsexml') {
+        stage('list_files') {
             steps {
                 script {
                     try {
                         echo " List of files"
                         sh 'ls -ltr'
+                        }
+                    catch (exec) {
+                        echo 'Something didnot work and got some exceptions'
+                        }
+                    }
+                }
+            }
+        stage('parsexml') {
+            steps {
+                script {
+                    try {
+                        echo " +++++++= Parsing ++++++++"
+                        def xml = '''
+                        <AS Name="123">
+                            <Config Name="Configuration1">
+                                <Servers>
+                                    <Server Name="server1"/>
+                                    <Server Name="server2"/>
+                                    <Server Name="server3"/>
+                                    <Server Name="server4"/>
+                                </Servers>
+                            </Config>
+                        </AS>
+                        '''
+
+                        def config = new XmlParser().parseText(xml)
+                        config.Config.Servers.Server.each{
+                            println it.@Name
+                        }
                         }
                     catch (exec) {
                         echo 'Something didnot work and got some exceptions'
