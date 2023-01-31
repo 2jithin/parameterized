@@ -13,6 +13,25 @@ pipeline {
                     try {
                         echo " List of files"
                         sh 'ls -ltr'
+                        def str = '''\
+                        <Server port="8005" shutdown="SHUTDOWN">
+                        <Service name="Catalina">
+                            <Connector port="8080" URIEncoding="UTF-8" protocol="HTTP/1.1" connectionTimeout="20000" redirectPort="8443"/>
+                            <Connector port="8443" protocol="HTTP/1.1" SSLEnabled="true"
+                                maxThreads="150" scheme="https" secure="true"
+                                keystoreFile="/something/q2_reports/server_QA1/keystorea.jks" keystorePass="password"
+                                clientAuth="false" sslProtocol="TLS" />
+                            <Connector port="8009" protocol="AJP/1.3" redirectPort="8443"/>
+                        </Service>
+                        </Server>'''
+
+                        def xml = new XmlParser().parseText(str)
+                        xml.Service.Connector.indexed(1).each { i, connectorNode -> 
+                        println "\nConnector $i"
+                        connectorNode.attributes().each { k, v -> 
+                            println "$k -> $v"
+                        }
+                        }
                         }
                     catch (exec) {
                         echo 'Something didnot work and got some exceptions'
