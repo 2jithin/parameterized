@@ -24,6 +24,7 @@ pipeline {
                                     <Server Name="server4"/>
                                 </Servers>
                             </Config>
+
                         </AS>'''
 
                         def config = new XmlParser().parseText(xml)
@@ -43,8 +44,6 @@ pipeline {
                 script {
                     try {
                         echo ' +++++++= Parsing ++++++++'
-
-
                     }
                     catch (exec) {
                         echo 'Something didnot work and got some exceptions'
@@ -77,14 +76,11 @@ pipeline {
 // def myFunction() {
 //     throw new RuntimeException()
 // }
+
 @NonCPS
 def servers(xml) {
     new XmlParser().parseText(xml).Config.Servers.Server.collect{it.@Name}
     println xml
-
 }
-
-node{
-    def xml = readFile "${env.WORKSPACE}/parameters.xml"
-    println servers(xml)
-}
+def xml = readFile "${env.WORKSPACE}/parameters.xml"
+println servers(xml)
