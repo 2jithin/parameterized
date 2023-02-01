@@ -26,13 +26,10 @@ pipeline {
                             </Config>
                         </AS>'''
 
-                        def servers(xml) {
-                            new XmlParser().parseText(xml).Config.Servers.Server.collect{it.@Name}
-                        }
+                        def config = new XmlParser().parseText(xml)
 
-                        node{
-                            def xml = readFile "${env.WORKSPACE}/parameters.xml"
-                            println servers(xml)
+                        config.Config.Servers.Server.each{
+                            println it.@Name
                         }
                         }
                     catch (exec) {
