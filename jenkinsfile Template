@@ -5,13 +5,13 @@ pipeline {
         timeout(time: 60, unit: 'MINUTES')
         timestamps()
         buildDiscarder(logRotator(numToKeepStr: '5'))
-    }
+        }
     stages {
         stage('list_files') {
             steps {
                 script {
                     try {
-                        echo ' List of files'
+                        echo " List of files"
                         sh 'ls -ltr'
                         def xml = '''\
                         <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
@@ -28,31 +28,46 @@ pipeline {
 
                         def config = new XmlParser().parseText(xml)
 
-                        config.Config.Servers.Server.each {
+                        config.Config.Servers.Server.each{
                             println it['Name']
                         }
-                    }
+                        }
                     catch (exec) {
                         echo 'Something didnot work and got some exceptions'
+                        }
                     }
                 }
             }
-        }
         stage('parsexml') {
             steps {
                 script {
                     try {
-                        echo ' +++++++= Parsing ++++++++'
+                        echo " +++++++= Parsing ++++++++"
+                        def xml = '''
+                        <AS Name="123">
+                            <Config Name="Configuration1">
+                                <Servers>
+                                    <Server Name="server1"/>
+                                    <Server Name="server2"/>
+                                    <Server Name="server3"/>
+                                    <Server Name="server4"/>
+                                </Servers>
+                            </Config>
+                        </AS>
+                        '''
 
-
-                    }
+                        def config = new XmlParser().parseText(xml)
+                        config.Config.Servers.Server.each{
+                            println it.@Name
+                        }
+                        }
                     catch (exec) {
                         echo 'Something didnot work and got some exceptions'
+                        }
                     }
                 }
             }
         }
-    }
     post {
         always {
             //junit 'build/reports/**/*.xml'
@@ -63,6 +78,7 @@ pipeline {
         }
         failure {
             echo 'parsing failed'
+            
         }
         unstable {
             echo 'current Pipeline has "unstable" state, usually by a failed test, code violations and other causes, in order to run. Usually represented in a web UI with a yellow indication.'
@@ -73,35 +89,18 @@ pipeline {
     }
 }
 
-// @NonCPS
-// def myFunction() {
-//     throw new RuntimeException()
-// }
+@NonCPS
+def myFunction() {
+    throw new RuntimeException();
+}
 @NonCPS
 def mySecondFunction() {
     try {
-        def xml = '''
-        <AS Name="123">
-            <Config Name="Configuration1">
-                <Servers>
-                    <Server Name="server1"/>
-                    <Server Name="server2"/>
-                    <Server Name="server3"/>
-                    <Server Name="server4"/>
-                </Servers>
-            </Config>
-        </AS>
-    '''
-    def config = new XmlParser().parseText(xml)
-    config.Config.Servers.Server.each {
-        println it.@Name
-    }
-
-        // myFunction()
+        myFunction();
     }
     catch (Exception e) {
-        echo 'Error Caught'
+        echo "Error Caught";
     }
 }
 
-mySecondFunction()
+mySecondFunction();
