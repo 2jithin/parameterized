@@ -29,7 +29,7 @@ pipeline {
                         def config = new XmlParser().parseText(xml)
 
                         config.Config.Servers.Server.each{
-                            println it.@Name
+                            println it['Name']
                         }
                         }
                     catch (exec) {
