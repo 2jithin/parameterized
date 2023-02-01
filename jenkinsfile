@@ -97,8 +97,8 @@ def myFunction() {
 def mySecondFunction() {
     try {
         myFunction();
-
-    } catch (exception e) {
+    }
+    catch (Exception e) {
         echo "Error Caught";
     }
 }
