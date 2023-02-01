@@ -56,7 +56,7 @@ pipeline {
     post {
         always {
             //junit 'build/reports/**/*.xml'
-            echo 'No Error'
+            echo '******************************** Pipeline Run Completed ****************************'
         }
         success {
             echo 'success Parsing'
@@ -79,29 +79,25 @@ pipeline {
 // }
 @NonCPS
 def mySecondFunction() {
-    try {
-        def xml = '''
-        <AS Name="123">
-            <Config Name="Configuration1">
-                <Servers>
-                    <Server Name="server1"/>
-                    <Server Name="server2"/>
-                    <Server Name="server3"/>
-                    <Server Name="server4"/>
-                </Servers>
-            </Config>
-        </AS>
+    
+    def xml = '''
+    <AS Name="123">
+        <Config Name="Configuration1">
+            <Servers>
+                <Server Name="server1"/>
+                <Server Name="server2"/>
+                <Server Name="server3"/>
+                <Server Name="server4"/>
+            </Servers>
+        </Config>
+    </AS>
     '''
     def config = new XmlParser().parseText(xml)
     config.Config.Servers.Server.each {
         println it.@Name
     }
+}
 
         // myFunction()
-    }
-    catch (Exception e) {
-        echo 'Error Caught'
-    }
-}
 
 mySecondFunction()
