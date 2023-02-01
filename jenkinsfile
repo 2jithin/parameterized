@@ -13,7 +13,7 @@ pipeline {
                     try {
                         echo " List of files"
                         sh 'ls -ltr'
-                        def str = '''\
+                        def xml = '''\
                         <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
                         <AS Name="123">
                             <Config Name="Configuration1">
@@ -26,7 +26,6 @@ pipeline {
                             </Config>
                         </AS>'''
 
-                        @NonCPS
                         def servers(xml) {
                             new XmlParser().parseText(xml).Config.Servers.Server.collect{it.@Name}
                         }
