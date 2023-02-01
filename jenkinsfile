@@ -88,3 +88,19 @@ pipeline {
         }
     }
 }
+
+@NonCPS
+def myFunction() {
+    throw new RuntimeException();
+}
+@NonCPS
+def mySecondFunction() {
+    try {
+        myFunction();
+
+    } catch (exception e) {
+        echo "Error Caught";
+    }
+}
+
+mySecondFunction();
