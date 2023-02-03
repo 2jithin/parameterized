@@ -27,7 +27,7 @@ pipeline {
 
                         </AS>'''
 
-                        def config = new XmlParser().parseText(xml)
+                        def config = new XmlParser().parseText(xml) // defining the the variable
 
                         config.Config.Servers.Server.each {
                             println it['Name']
@@ -45,7 +45,7 @@ pipeline {
                     try {
                         echo ' +++++++= Parsing ++++++++'
                     }
-                    catch (exec) {
+                    catch (Exception ex) {
                         echo 'Something didnot work and got some exceptions'
                     }
                 }
@@ -77,10 +77,10 @@ pipeline {
 //     throw new RuntimeException()
 // }
 
-@NonCPS
-def servers(xml) {
-    new XmlParser().parseText(xml).Config.Servers.Server.collect{it.@Name}
-    println xml
-}
-def xml = readFile "${env.WORKSPACE}/parameters.xml"
-println servers(xml)
+// @NonCPS
+// def servers(xml) {
+//     new XmlParser().parseText(xml).Config.Servers.Server.collect{it.@Name}
+//     println xml
+// }
+// def xml = readFile "${env.WORKSPACE}/parameters.xml"
+// println servers(xml)
