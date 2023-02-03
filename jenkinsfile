@@ -1,5 +1,5 @@
 @Library('xmlparsing@main')_ // _ accept all libraries under vars folder . it should import
-
+def First_NAME = null
 pipeline {
     agent none
     options {
@@ -18,15 +18,13 @@ pipeline {
                 }
             }
             steps {
-                input { // should not use inside the script or steps
-                    message "Enter the name?"
-                    ok "submit_input"
-                    parameters {
-                        string(defaultValue: 'jithin', name: 'First_NAME', trim: true) 
-                    }
-                }
                 script {
                     try {
+                        First_NAME = input (     // This will work under the script
+                            message: "Enter the name?",
+                            ok: "submit_input",
+                            parameters: [string(defaultValue: 'jithin', name: 'First_NAME', trim: true)]
+                        )
                         echo ' List of files'
                         sh 'ls -ltr'
 
