@@ -3,7 +3,7 @@ node
 {   
     try {
         echo "My FIRST Groovy Script"
-        myfirstcode("Jithin C")
+        confirmmessage("Jithin C")
     } catch (exec) {
 
     } finally {
