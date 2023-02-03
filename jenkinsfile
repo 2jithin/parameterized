@@ -1,4 +1,4 @@
-@Library('xmlparsing')_
+@Library('xmlparsing@main')_ // _ accept all libraries under vars folder . it should import
  stage('Demo') {
      echo 'Hello world'
      sayHello 'Alex'
