@@ -15,9 +15,11 @@ pipeline {
                         echo ' List of files'
                         sh 'ls -ltr'
                         fname = input {
-                            message: "Enter the name?",
-                            ok: 'submit',
-                            parameters: [string(defaultValue: 'jithi', name: 'NAME', trim: true)]
+                            message "Enter the name?",
+                            ok 'submit',
+                            parameters { 
+                                string(defaultValue: 'jithi', name: 'NAME', trim: true) 
+                            }
                         }
                         def xml = '''\
                         <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
