@@ -1,7 +1,7 @@
 @Library('xmlparsing@main')_ // _ accept all libraries under vars folder . it should import
 def fname = null
 pipeline {
-    agent any
+    agent none
     options {
         timeout(time: 60, unit: 'MINUTES')
         timestamps()
@@ -9,18 +9,19 @@ pipeline {
     }
     stages {
         stage('list_files') {
+            agent any
+            fname = input {
+            message "Enter the name?"
+            ok 'submit'
+            parameters { 
+                string(defaultValue: 'jithi', name: 'NAME', trim: true) 
+            }
+        }
             steps {
                 script {
                     try {
                         echo ' List of files'
                         sh 'ls -ltr'
-                        fname = input {
-                            message "Enter the name?"
-                            ok 'submit'
-                            parameters { 
-                                string(defaultValue: 'jithi', name: 'NAME', trim: true) 
-                            }
-                        }
                         def xml = '''\
                         <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
                         <AS Name="123">
