@@ -1,8 +1,15 @@
 // @Library('xmlparsing')_    // xmlparsing@main
 node
-{
-    echo "My FIRST Groovy Script"
-    myfirstcode("Jithin C")
+{   
+    try {
+        echo "My FIRST Groovy Script"
+        myfirstcode("Jithin C")
+    } catch (exec) {
+
+    } finally {
+        echo "Build Completed"
+    }
+
 }
 // @Library('xmlparsing')_
 
