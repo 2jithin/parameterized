@@ -1,3 +1,5 @@
+#!/usr/bin/env groovy
+
 def call(def userarg1)
 {
     echo "user input message is ${userarg1}"

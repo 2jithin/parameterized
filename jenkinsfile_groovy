@@ -1,5 +1,11 @@
-@Library('xmlparsing') _    // xmlparsing@main
-node
-{
-    myfirstcode("Jithin C")
-}
+// @Library('xmlparsing')_    // xmlparsing@main
+// node
+// {
+//     myfirstcode("Jithin C")
+// }
+@Library('xmlparsing')_
+
+ stage('Demo') {
+     echo 'Hello world'
+     sayHello 'Alex'
+ }
