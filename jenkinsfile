@@ -15,8 +15,8 @@ pipeline {
                         echo ' List of files'
                         sh 'ls -ltr'
                         fname = input {
-                            message "Enter the name?",
-                            ok 'submit',
+                            message "Enter the name?"
+                            ok 'submit'
                             parameters { 
                                 string(defaultValue: 'jithi', name: 'NAME', trim: true) 
                             }
