@@ -46,6 +46,11 @@ pipeline {
         }
         stage('parsexml') {
             steps {
+                @Library('xmlparsing')_
+                node ('master'){
+                    echo '____________________________________________'
+                    confirmmessage("Jithin C")
+                    }
                 script {
                     try {
                         echo ' +++++++= Parsing ++++++++'
