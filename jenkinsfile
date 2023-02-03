@@ -10,7 +10,7 @@ pipeline {
     stages {
         stage('list_files') {
             agent any
-            input {
+            input { // should not use inside the script or steps
                 message "Enter the name?"
                 ok "submit"
                 parameters {
@@ -18,6 +18,13 @@ pipeline {
                 }
             }
             steps {
+                input { // should not use inside the script or steps
+                    message "Enter the name?"
+                    ok "submit_input"
+                    parameters {
+                        string(defaultValue: 'jithin', name: 'First_NAME', trim: true) 
+                    }
+                }
                 script {
                     try {
                         echo ' List of files'
