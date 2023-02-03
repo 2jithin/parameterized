@@ -4,8 +4,8 @@ def call(def userarg1)
 {
     echo "user input message is ${userarg1}"
 	input message: 'Please Confirm to Proceed deployment', ok: 'Confirm'
-    def username = System.console().readLine 'What is your name?'
-    println "Hello $username"
+    //def username = System.console().readLine 'What is your name?'
+    println "Hello $userarg1"
         // Variables for input
     // def inputConfig
     // def inputTest
