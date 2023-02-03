@@ -17,30 +17,31 @@ pipeline {
                         sh 'ls -ltr'
                         fname = input {
                         message "Enter the name?"
-                        ok 'submit'
-                        parameters { 
+                        ok "submit"
+                        parameters {
+
                             string(defaultValue: 'jithi', name: 'NAME', trim: true) 
+                            }
                         }
-                        }
-                        def xml = '''\
-                        <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-                        <AS Name="123">
-                            <Config Name="Configuration1">
-                                <Servers>
-                                    <Server Name="server1"/>
-                                    <Server Name="server2"/>
-                                    <Server Name="server3"/>
-                                    <Server Name="server4"/>
-                                </Servers>
-                            </Config>
+                        // def xml = '''\
+                        // <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+                        // <AS Name="123">
+                        //     <Config Name="Configuration1">
+                        //         <Servers>
+                        //             <Server Name="server1"/>
+                        //             <Server Name="server2"/>
+                        //             <Server Name="server3"/>
+                        //             <Server Name="server4"/>
+                        //         </Servers>
+                        //     </Config>
 
-                        </AS>'''
+                        // </AS>'''
 
-                        def config = new XmlParser().parseText(xml) // defining the the variable
+                        // def config = new XmlParser().parseText(xml) // defining the the variable
 
-                        config.Config.Servers.Server.each {
-                            println it['Name']
-                        }
+                        // config.Config.Servers.Server.each {
+                        //     println it['Name']
+                        // }
                     }
                     catch (exec) {
                         echo 'Something didnot work and got some exceptions'
