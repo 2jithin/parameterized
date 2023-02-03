@@ -1,8 +1,4 @@
 @Library('xmlparsing@main')_ // _ accept all libraries under vars folder . it should import
- stage('Demo') {
-     echo 'Hello world'
-     sayHello 'Alex'
- }
 
 pipeline {
     agent any
@@ -46,7 +42,7 @@ pipeline {
         }
         stage('parsexml') {
             steps {
-                @Library('xmlparsing')_
+                
                 node ('master'){
                     echo '____________________________________________'
                     confirmmessage("Jithin C")
