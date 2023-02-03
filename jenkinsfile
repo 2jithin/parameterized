@@ -42,11 +42,8 @@ pipeline {
         }
         stage('parsexml') {
             steps {
-                
-                node (){
                     echo '____________________________________________'
                     confirmmessage("Jithin C")
-                    }
                 script {
                     try {
                         echo ' +++++++= Parsing ++++++++'
