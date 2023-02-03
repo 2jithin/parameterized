@@ -1,11 +1,12 @@
 // @Library('xmlparsing')_    // xmlparsing@main
-// node
-// {
-//     myfirstcode("Jithin C")
-// }
-@Library('xmlparsing')_
+node
+{
+    echo "My FIRST Groovy Script"
+    myfirstcode("Jithin C")
+}
+// @Library('xmlparsing')_
 
- stage('Demo') {
-     echo 'Hello world'
-     sayHello 'Alex'
- }
+//  stage('Demo') {
+//      echo 'Hello world'
+//      sayHello 'Alex'
+//  }
