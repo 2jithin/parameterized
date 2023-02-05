@@ -57,10 +57,11 @@ pipeline {
         stage('parsexml') {
             steps {
                     echo '___________________ PARSING STARTED _________________________'
-                    confirmmessage("Jithin C")
+                    
                 script {
                     try {
                         echo ' +++++++= Parsing ++++++++'
+                        confirmmessage("Jithin C")
                     }
                     catch (Exception ex) {
                         echo 'Something didnot work and got some exceptions'
