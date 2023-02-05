@@ -1,7 +1,8 @@
 def call(def userarg1)
 {
     println "user input is  $userarg1"
-    println "${env.WORKSPACE}"
+    def filevalue = readFile "./parameters.xml"
+    println filevalue
     def xml = userarg1
     xml = '''
     <AS Name="123">
