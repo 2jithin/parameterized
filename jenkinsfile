@@ -61,7 +61,6 @@ pipeline {
                     try {
                         echo ' +++++++= Parsing ++++++++'
                         def jenkinsworkspace = "${WORKSPACE}"
-                        jenkinsworkspace = pwd()
                         echo "${jenkinsworkspace}"
                         parsing("Jithin C","${env.WORKSPACE}/parameters.xml")
                     }
