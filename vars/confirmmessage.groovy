@@ -18,31 +18,10 @@ def call(def userarg1)
         </Config>
 
     </AS>'''
-    
+
     def config = new XmlParser().parseText(xml) // defining the the variable
 
     config.Config.Servers.Server.each {
         println it['Name']
-    }
-        // Variables for input
-    // def inputConfig
-    // def inputTest
-
-    // // Get the input
-    // def userInput = input(
-    //         id: 'userInput', message: 'Enter path of test reports:?',
-    //         parameters: [
-
-    //                 string(defaultValue: 'None',
-    //                         description: 'Path of config file',
-    //                         name: 'Config'),
-    //                 string(defaultValue: 'None',
-    //                         description: 'Test Info file',
-    //                         name: 'Test'),
-    //         ])
-
-    // // Save to variables. Default to empty string if not found.
-    // inputConfig = userInput.Config?:''
-    // inputTest = userInput.Test?:''
     }
 }
