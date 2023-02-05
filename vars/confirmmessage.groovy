@@ -5,8 +5,7 @@ def call(def userarg1)
     echo "user input message is ${userarg1}"
     println "Hello $userarg1"
 
-    def xml = '''\
-    <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+    def xml = '''
     <AS Name="123">
         <Config Name="Configuration1">
             <Servers>
@@ -16,12 +15,12 @@ def call(def userarg1)
                 <Server Name="server4"/>
             </Servers>
         </Config>
+    </AS>
+    '''
 
-    </AS>'''
+    def config = new XmlParser().parseText(xml)
 
-    def config = new XmlParser().parseText(xml) // defining the the variable
-
-    config.Config.Servers.Server.each {
-        println it['Name']
+    config.Config.Servers.Server.each{
+        println it.@Name
     }
 }
