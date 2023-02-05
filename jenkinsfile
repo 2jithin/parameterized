@@ -62,7 +62,7 @@ pipeline {
                         echo ' +++++++= Parsing ++++++++'
                         sh 'pwd > jenkinsworkspace'
                         def jenkinsworkspace = readFile('jenkinsworkspace').trim()
-                        echo "${jenkinsworkspace}"
+                        
                         parsing("Jithin C","${env.WORKSPACE}/parameters.xml")
                     }
                     catch (Exception ex) {
