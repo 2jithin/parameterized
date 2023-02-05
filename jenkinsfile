@@ -56,11 +56,11 @@ pipeline {
         }
         stage('parsexml') {
             steps {
-                    echo '___________________ PARSING STARTED _________________________'
+                echo '___________________ PARSING STARTED _________________________'
                 script {
                     try {
                         echo ' +++++++= Parsing ++++++++'
-                        echo "$WORKSPACE"
+                        echo $WORKSPACE
                         parsing("Jithin C","${env.WORKSPACE}/parameters.xml")
                     }
                     catch (Exception ex) {
