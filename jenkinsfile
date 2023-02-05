@@ -10,21 +10,21 @@ pipeline {
     stages {
         stage('list_files') {
             agent any
-            input { // should not use inside the script or steps
-                message "Enter the name?"
-                ok "submit"
-                parameters {
-                    string(defaultValue: 'jithi', name: 'NAME', trim: true) 
-                }
-            }
+            // input { // should not use inside the script or steps
+            //     message "Enter the name?"
+            //     ok "submit"
+            //     parameters {
+            //         string(defaultValue: 'jithi', name: 'NAME', trim: true) 
+            //     }
+            // }
             steps {
                 script {
                     try {
-                        First_NAME = input (     // This will work under the script
-                            message: "Enter the name?",
-                            ok: "submit_input",
-                            parameters: [string(defaultValue: 'jithin', name: 'First_NAME', trim: true)]
-                        )
+                        // First_NAME = input (     // This will work under the script
+                        //     message: "Enter the name?",
+                        //     ok: "submit_input",
+                        //     parameters: [string(defaultValue: 'jithin', name: 'First_NAME', trim: true)]
+                        // )
                         echo ' List of files'
                         sh 'ls -ltr'
 
