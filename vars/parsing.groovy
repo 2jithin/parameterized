@@ -1,8 +1,8 @@
 def call(def userarg1)
 {
-    println "Hello $userarg1"
+    // println "user input is  $userarg1"
     //
-    def xml = '''
+    userarg1 = '''
     <AS Name="123">
         <Config Name="Configuration1">
             <Servers>
