@@ -57,10 +57,11 @@ pipeline {
         stage('parsexml') {
             steps {
                 echo '___________________ PARSING STARTED _________________________'
-                def jenkinsworkspace = "${WORKSPACE}"
+                echo "${WORKSPACE}"
                 script {
                     try {
                         echo ' +++++++= Parsing ++++++++'
+                        def jenkinsworkspace = "${WORKSPACE}"
                         echo "${jenkinsworkspace}"
                         parsing("Jithin C","${env.WORKSPACE}/parameters.xml")
                     }
