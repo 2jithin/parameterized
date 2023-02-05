@@ -60,7 +60,7 @@ pipeline {
                 script {
                     try {
                         echo ' +++++++= Parsing ++++++++'
-                        parsing("Jithin C")
+                        parsing("Jithin C","${env.WORKSPACE}/parameters.xml")
                     }
                     catch (Exception ex) {
                         echo 'Something didnot work and got some exceptions'

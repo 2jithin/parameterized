@@ -1,9 +1,8 @@
-def call(def userarg1)
+def call(def userarg1 , def filepath)
 {
     println "user input is  $userarg1"
-    println userarg1
-    // def filevalue = readFile "parameters.xml"
-    // println filevalue
+    filevalue = readFile "$filepath/parameters.xml"
+    println filevalue
     def xml = userarg1
     xml = '''
     <AS Name="123">
