@@ -60,7 +60,7 @@ pipeline {
                 script {
                     try {
                         echo ' +++++++= Parsing ++++++++'
-                        echo " Workspace path is $env.WORKSPACE"
+                        echo " Workspace path is $WORKSPACE"
                         parsing("Jithin C","${env.WORKSPACE}/parameters.xml")
                     }
                     catch (Exception ex) {
