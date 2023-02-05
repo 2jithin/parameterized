@@ -15,4 +15,5 @@ def config = new XmlParser().parseText(xml)
 
 config.Config.Servers.Server.each{
     println it.@Name
+    println "${env.WORKSPACE}/parameters.xml"
 }
