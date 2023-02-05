@@ -57,10 +57,11 @@ pipeline {
         stage('parsexml') {
             steps {
                     echo '___________________ PARSING STARTED _________________________'
+                    parsing() // If inside script then security approval issue comes
                 script {
                     try {
                         echo ' +++++++= Parsing ++++++++'
-                        parsing()
+                        // parsing()
                     }
                     catch (Exception ex) {
                         echo 'Something didnot work and got some exceptions'
