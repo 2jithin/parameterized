@@ -60,8 +60,8 @@ pipeline {
                 script {
                     try {
                         echo ' +++++++= Parsing ++++++++'
-                        sh 'pwd > jenkinsworkspace'
-                        def jenkinsworkspace = readFile('jenkinsworkspace').trim()
+                        sh 'export -p'
+                        //def jenkinsworkspace = readFile('jenkinsworkspace').trim()
                         
                         parsing("Jithin C","${env.WORKSPACE}/parameters.xml")
                     }
