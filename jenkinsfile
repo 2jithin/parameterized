@@ -60,9 +60,9 @@ pipeline {
                 echo "${WORKSPACE}"
                 script {
                     try {
-                        echo ' +++++++= Parsing ++++++++'
-                        def jenkinsworkspace = "${WORKSPACE}"
-                        echo "${jenkinsworkspace}"
+                        // echo ' +++++++= Parsing ++++++++'
+                        // def jenkinsworkspace = "${WORKSPACE}"
+                        // echo "${jenkinsworkspace}"
                         parsing("Jithin C","${env.WORKSPACE}/parameters.xml")
                     }
                     catch (Exception ex) {
