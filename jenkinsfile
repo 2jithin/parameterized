@@ -60,7 +60,7 @@ pipeline {
                 script {
                     try {
                         echo ' +++++++= Parsing ++++++++ '
-                        sh "export -p"
+                        // sh "export -p" // shell script not loading
                         //def jenkinsworkspace = readFile('jenkinsworkspace').trim()
                         
                         parsing("Jithin C","parameters.xml")
