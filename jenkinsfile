@@ -22,13 +22,10 @@ pipeline {
             steps {
                 echo "================================ TEST SCRIPT STAGE ================================="
                 
-                //def response = httpRequest acceptType: 'TEXT_PLAIN', ignoreSslErrors: true, outputFile: 'newfile.txt', quiet: true, responseHandle: 'NONE', url: 'https://raw.githubusercontent.com/2jithin/sampletomcatapplication/main/pom.xml', wrapAsMultipart: false
-                echo $httpRequest.response
+                def response = httpRequest outputFile: 'response', quiet: true, url: 'https://raw.githubusercontent.com/2jithin/sampletomcatapplication/main/pom.xml'
+                echo "${response}"
                 // echo "Building ${env.JOB_NAME}..."
                 // echo "${env.WORKSPACE}"
-                script {
-                    def response1 = httpRequest 'https://raw.githubusercontent.com/2jithin/sampletomcatapplication/main/pom.xml'
-                }
             }
         }
         stage('list_files') {
