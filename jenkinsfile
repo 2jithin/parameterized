@@ -17,7 +17,7 @@ pipeline {
             agent none
             steps {
                 echo "================================ TEST SCRIPT STAGE ================================="
-                echo "Building ${env.JOB_NAME}..."
+                echo "Building ${env.WORKSPACE}..."
                 
             }
         }
