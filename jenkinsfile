@@ -12,7 +12,10 @@ pipeline {
             agent none
             steps {
                 echo "================================ TEST SCRIPT STAGE ================================="
-                sh 'echo hello'
+                script{
+                    sh 'echo hello'
+                }
+                
             }
         }
         stage('list_files') {
