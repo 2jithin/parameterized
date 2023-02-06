@@ -13,7 +13,7 @@ pipeline {
             steps {
                 echo "================================ TEST SCRIPT STAGE ================================="
                 script{
-                    sh 'echo hello'
+                    sh 'sudo whoami'
                 }
                 
             }
