@@ -5,14 +5,14 @@ pipeline {
     options {
         timeout(time: 60, unit: 'MINUTES')
         timestamps()
-        buildDiscarder(logRotator(numToKeepStr: '5'))
+        buildDiscarder(logRotator(numToKeepStr: '15'))
     }
     stages {
         stage('Test_SCRIPT') {
             agent none
             steps {
                 echo "================================ TEST SCRIPT STAGE ================================="
-                echo "${WORKSPACE}"
+                sh 'env'
             }
         }
         stage('list_files') {
