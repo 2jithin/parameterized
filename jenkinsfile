@@ -8,6 +8,12 @@ pipeline {
         buildDiscarder(logRotator(numToKeepStr: '5'))
     }
     stages {
+        stage('Test_SCRIPT') {
+            agent none
+            steps {
+                echo ${env.WORKSPACE}
+            }
+        }
         stage('list_files') {
             agent any
             // input { // should not use inside the script or steps
@@ -36,7 +42,6 @@ pipeline {
             }
         }
         stage('parsexml') {
-            agent none
             steps {
                 echo '___________________ PARSING STARTED _________________________'
                 script {
