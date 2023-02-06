@@ -25,28 +25,9 @@ pipeline {
                         //     ok: "submit_input",
                         //     parameters: [string(defaultValue: 'jithin', name: 'First_NAME', trim: true)]
                         // )
+
                         echo ' List of files'
                         sh 'ls -ltr'
-
-                        // def xml = '''\
-                        // <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-                        // <AS Name="123">
-                        //     <Config Name="Configuration1">
-                        //         <Servers>
-                        //             <Server Name="server1"/>
-                        //             <Server Name="server2"/>
-                        //             <Server Name="server3"/>
-                        //             <Server Name="server4"/>
-                        //         </Servers>
-                        //     </Config>
-
-                        // </AS>'''
-
-                        // def config = new XmlParser().parseText(xml) // defining the the variable
-
-                        // config.Config.Servers.Server.each {
-                        //     println it['Name']
-                        // }
                     }
                     catch (exec) {
                         echo 'Something didnot work and got some exceptions'
@@ -55,8 +36,10 @@ pipeline {
             }
         }
         stage('parsexml') {
+            agent none
             steps {
                 echo '___________________ PARSING STARTED _________________________'
+                echo "${WORKSPACE}"
                 script {
                     try {
                         echo ' +++++++= Parsing ++++++++ '
