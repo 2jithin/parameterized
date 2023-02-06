@@ -9,6 +9,9 @@ pipeline {
         //skipDefaultCheckout false
         
     }
+    environment {
+        ws = "/path/location/"
+    }
     stages {
         stage('Test_SCRIPT') {
             agent none
