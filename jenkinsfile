@@ -7,14 +7,13 @@ pipeline {
         timestamps()
         buildDiscarder(logRotator(numToKeepStr: '15'))
         //skipDefaultCheckout false
-        
+       
     }
     environment {
         ws = "null"
     }
     stages {
         stage('Test_SCRIPT') {
-            agent any
             node {
                 sh 'echo hello world'
             }
