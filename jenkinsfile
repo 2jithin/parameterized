@@ -1,5 +1,8 @@
 @Library('xmlparsing@main')_ // _ accept all libraries under vars folder . it should import
 def First_NAME = null
+node {
+    sh 'echo hello world'
+}
 pipeline {
     agent none
     options {
@@ -7,16 +10,14 @@ pipeline {
         timestamps()
         buildDiscarder(logRotator(numToKeepStr: '15'))
         //skipDefaultCheckout false
-       
+        
     }
     environment {
         ws = "null"
     }
     stages {
         stage('Test_SCRIPT') {
-            node {
-                sh 'echo hello world'
-            }
+            agent any
             steps {
                 echo "================================ TEST SCRIPT STAGE ================================="
                 echo "Building ${env.JOB_NAME}..."
