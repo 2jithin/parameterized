@@ -20,10 +20,13 @@ pipeline {
         stage('Test_SCRIPT') {
             agent any
             steps {
-                echo "================================ TEST SCRIPT STAGE ================================="
+                script {
+                    echo "================================ TEST SCRIPT STAGE ================================="
                 
-                def response = httpRequest url: 'https://raw.githubusercontent.com/2jithin/sampletomcatapplication/main/pom.xml'
-                echo "Request http status is ${response.status}"
+                    def response = httpRequest url: 'https://raw.githubusercontent.com/2jithin/sampletomcatapplication/main/pom.xml'
+                    echo "Request http status is ${response.status}"
+                }
+
                 // echo "Building ${env.JOB_NAME}..."
                 // echo "${env.WORKSPACE}"
             }
