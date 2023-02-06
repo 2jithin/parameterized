@@ -43,6 +43,7 @@ pipeline {
             steps {
                 script {
                     try {
+                        echo "============================================ Listing File ============================================="
                         // First_NAME = input (     // This will work under the script
                         //     message: "Enter the name?",
                         //     ok: "submit_input",
