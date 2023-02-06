@@ -1,7 +1,7 @@
 @Library('xmlparsing@main')_ // _ accept all libraries under vars folder . it should import
 def First_NAME = null
 node {
-    sh 'echo hello world'
+    sh 'echo node scipted pipeline testing box'
 }
 pipeline {
     agent none
@@ -14,6 +14,7 @@ pipeline {
     }
     environment {
         ws = "null"
+        // JOB_TIME = sh (returnStdout: true, script: "date '+%A %W %Y % X'").trim()
     }
     stages {
         stage('Test_SCRIPT') {
@@ -21,6 +22,7 @@ pipeline {
             steps {
                 echo "================================ TEST SCRIPT STAGE ================================="
                 echo "Building ${env.JOB_NAME}..."
+                sh 'env.WORKSPACE'
 
                 sh 'export -p'
                 
@@ -62,7 +64,7 @@ pipeline {
                         // sh "export -p" // shell script not loading
                         //def jenkinsworkspace = readFile('jenkinsworkspace').trim()
                         
-                        parsing("Jithin C","parameters.xml")
+                        parsing("Jithin C","")
                     }
                     catch (Exception ex) {
                         echo 'Something didnot work and got some exceptions'
@@ -103,3 +105,7 @@ pipeline {
 // }
 // def xml = readFile "${env.WORKSPACE}/parameters.xml"
 // println servers(xml)
+
+// @NonCPS
+
+// parsing("jithin c")
