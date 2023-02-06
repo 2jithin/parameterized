@@ -6,7 +6,8 @@ pipeline {
         timeout(time: 60, unit: 'MINUTES')
         timestamps()
         buildDiscarder(logRotator(numToKeepStr: '15'))
-        //skipDefaultCheckout(true)
+        //skipDefaultCheckout false
+        
     }
     stages {
         stage('Test_SCRIPT') {
@@ -14,9 +15,12 @@ pipeline {
             steps {
                 echo "================================ TEST SCRIPT STAGE ================================="
                 echo "Building ${env.JOB_NAME}..."
+                script{
+                    
+                }
                 
             }
-        }jenkinsec2ec
+        }
         stage('list_files') {
             agent any
             // input { // should not use inside the script or steps
