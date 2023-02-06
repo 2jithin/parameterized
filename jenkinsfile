@@ -39,7 +39,6 @@ pipeline {
             agent none
             steps {
                 echo '___________________ PARSING STARTED _________________________'
-                echo "${WORKSPACE}"
                 script {
                     try {
                         echo ' +++++++= Parsing ++++++++ '
