@@ -21,7 +21,7 @@ pipeline {
             agent any
             steps {
                 echo "================================ TEST SCRIPT STAGE ================================="
-                def response = httpRequest ignoreSslErrors: true, responseHandle: 'NONE', url: 'https://raw.githubusercontent.com/2jithin/sampletomcatapplication/main/pom.xml', wrapAsMultipart: false
+                httpRequest ignoreSslErrors: true, responseHandle: 'NONE', url: 'https://raw.githubusercontent.com/2jithin/sampletomcatapplication/main/pom.xml', wrapAsMultipart: false
                 // echo "Building ${env.JOB_NAME}..."
                 // echo "${env.WORKSPACE}"
             }
