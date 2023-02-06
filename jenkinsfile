@@ -14,7 +14,10 @@ pipeline {
     }
     stages {
         stage('Test_SCRIPT') {
-            agent none
+            agent any
+            node {
+                sh 'echo hello world'
+            }
             steps {
                 echo "================================ TEST SCRIPT STAGE ================================="
                 echo "Building ${env.JOB_NAME}..."
