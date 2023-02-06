@@ -1,5 +1,6 @@
 @Library('xmlparsing@main')_ // _ accept all libraries under vars folder . it should import
 def First_NAME = null
+def response = null
 node {
     sh 'echo node scipted pipeline testing box'
 }
@@ -23,7 +24,7 @@ pipeline {
                 script {
                     echo "================================ TEST SCRIPT STAGE ================================="
                 
-                    def response = httpRequest url: 'https://raw.githubusercontent.com/2jithin/sampletomcatapplication/main/pom.xml'
+                    response = httpRequest url: 'https://raw.githubusercontent.com/2jithin/sampletomcatapplication/main/pom.xml'
                     echo "Request http status is ${response.status}"
                 }
 
@@ -69,7 +70,7 @@ pipeline {
                         // sh "export -p" // shell script not loading
                         //def jenkinsworkspace = readFile('jenkinsworkspace').trim()
                         
-                        parsing("Jithin C","")
+                        parsing("Jithin C","${response}")
                     }
                     catch (Exception ex) {
                         echo 'Something didnot work and got some exceptions'
