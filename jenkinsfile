@@ -1,5 +1,8 @@
 @Library('xmlparsing@main')_ // _ accept all libraries under vars folder . it should import
 def First_NAME = null
+node {
+    sh 'echo hello world'
+}
 pipeline {
     agent none
     options {
@@ -18,6 +21,7 @@ pipeline {
             steps {
                 echo "================================ TEST SCRIPT STAGE ================================="
                 echo "Building ${env.JOB_NAME}..."
+
                 sh 'export -p'
                 
             }
