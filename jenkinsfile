@@ -21,8 +21,9 @@ pipeline {
             agent any
             steps {
                 echo "================================ TEST SCRIPT STAGE ================================="
-                echo "Building ${env.JOB_NAME}..."
-                echo "${env.WORKSPACE}"
+                def response = httpRequest (ignoreSslErrors: true, responseHandle: 'NONE', url: 'https://raw.githubusercontent.com/2jithin/sampletomcatapplication/main/pom.xml', wrapAsMultipart: false)
+                // echo "Building ${env.JOB_NAME}..."
+                // echo "${env.WORKSPACE}"
             }
         }
         stage('list_files') {
@@ -58,6 +59,7 @@ pipeline {
                 script {
                     try {
                         echo ' +++++++= Parsing ++++++++ '
+
                         // sh "export -p" // shell script not loading
                         //def jenkinsworkspace = readFile('jenkinsworkspace').trim()
                         
