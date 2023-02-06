@@ -10,14 +10,15 @@ pipeline {
         
     }
     environment {
-        ws = "/path/location/"
+        ws = "null"
     }
     stages {
         stage('Test_SCRIPT') {
             agent none
             steps {
                 echo "================================ TEST SCRIPT STAGE ================================="
-                echo "Building ${env.WORKSPACE}..."
+                echo "Building ${env.JOB_NAME}..."
+                sh 'export -p'
                 
             }
         }
