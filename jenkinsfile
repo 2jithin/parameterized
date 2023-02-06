@@ -11,7 +11,7 @@ pipeline {
         stage('Test_SCRIPT') {
             agent none
             steps {
-                echo ${env.WORKSPACE}
+                echo "${env.WORKSPACE}"
             }
         }
         stage('list_files') {
