@@ -21,7 +21,8 @@ pipeline {
             agent any
             steps {
                 echo "================================ TEST SCRIPT STAGE ================================="
-                def response = httpRequest ignoreSslErrors: true, responseHandle: 'NONE', url: 'https://raw.githubusercontent.com/2jithin/sampletomcatapplication/main/pom.xml', wrapAsMultipart: false
+                def response1 = httpRequest 'https://raw.githubusercontent.com/2jithin/sampletomcatapplication/main/pom.xml'
+                //def response = httpRequest acceptType: 'TEXT_PLAIN', ignoreSslErrors: true, outputFile: 'newfile.txt', quiet: true, responseHandle: 'NONE', url: 'https://raw.githubusercontent.com/2jithin/sampletomcatapplication/main/pom.xml', wrapAsMultipart: false
                 echo $httpRequest.response
                 // echo "Building ${env.JOB_NAME}..."
                 // echo "${env.WORKSPACE}"
