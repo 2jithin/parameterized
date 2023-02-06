@@ -12,7 +12,7 @@ pipeline {
             agent none
             steps {
                 echo "================================ TEST SCRIPT STAGE ================================="
-                sh 'env'
+                sh 'echo hello'
             }
         }
         stage('list_files') {
