@@ -14,9 +14,6 @@ pipeline {
             steps {
                 echo "================================ TEST SCRIPT STAGE ================================="
                 echo "Building ${env.JOB_NAME}..."
-                script{
-                    
-                }
                 
             }
         }jenkinsec2ec
