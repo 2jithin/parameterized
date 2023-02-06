@@ -22,8 +22,8 @@ pipeline {
             steps {
                 echo "================================ TEST SCRIPT STAGE ================================="
                 
-                def response = httpRequest outputFile: 'response', quiet: true, url: 'https://raw.githubusercontent.com/2jithin/sampletomcatapplication/main/pom.xml'
-                echo "${response}"
+                def response = httpRequest url: 'https://raw.githubusercontent.com/2jithin/sampletomcatapplication/main/pom.xml'
+                echo "Request http status is ${response.status}"
                 // echo "Building ${env.JOB_NAME}..."
                 // echo "${env.WORKSPACE}"
             }
