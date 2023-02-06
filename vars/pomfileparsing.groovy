@@ -1,5 +1,6 @@
-def call(def userarg , def responsedata)
-{ 
+def call(def responsedata)
+{   
+    println responsedata
     def xml = responsedata
     def config = new XmlParser().parseText(xml)
     project.dependencyManagement.dependencies.dependency.each{
