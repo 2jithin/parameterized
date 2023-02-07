@@ -11,10 +11,10 @@ def call(def responsedata)
     
     // Using parser function parsing the xml
     def config = new XmlParser().parseText(xml)
-    // def dependencies = config.dependencies.dependency.collect { dep ->
-    //     dep.groupId.text()
-  	// }
-    // dependencies.each { println "- $it" }
+    def dependencies = config.dependencies.dependency.collect { dep ->
+        dep.groupId.text()
+  	}
+    dependencies.each { println "- $it" }
 
     // ================================================================================
 
