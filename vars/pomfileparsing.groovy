@@ -11,7 +11,6 @@ def call(def responsedata)
     xml = xml.replace(' "',"")
     // Using parser function parsing the xml
     def config = new XmlParser().parseText(xml)
-    println(config)
     def dependencies = config.dependencies.dependency.collect { dep ->
         dep.groupId.text()
   	}
