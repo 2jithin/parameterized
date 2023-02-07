@@ -1,9 +1,8 @@
+import groovy.xml.*
 def call(def userarg1)
 {     
     println "Hello $userarg1"
     def xml = '''
-    <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-            xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <dependencyManagement>
         <dependencies>
         <dependency>
@@ -66,8 +65,13 @@ def call(def userarg1)
     </dependencyManagement>
     '''
     def config = new XmlParser().parseText(xml)
-    project.dependencyManagement.dependencies.dependency.each{
-    println it.@artifactId
-    }
+  	def dependencies = config.dependencyManagement.dependencies.dependency.collect { dep ->
+      //"${dep.groupId}:${dep.artifactId}:${dep.version}"
+      dep.groupId
+  	}
+  	println "Dependencies:"
+    dependencies.each { println " - $it" }
+    
+    //println "${config.dependencyManagement/dependencies/dependency[2]/groupId.toString()}"
   }
   call ("jithin")
