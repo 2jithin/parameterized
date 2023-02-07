@@ -69,6 +69,7 @@ pipeline {
 
                         // sh "export -p" // shell script not loading
                         //def jenkinsworkspace = readFile('jenkinsworkspace').trim()
+                        echo "${env.WORKSPACE}/parameters.xml"
                         pomfileparsing("${response.content}")
                     }
                     catch (Exception ex) {

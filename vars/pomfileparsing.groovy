@@ -1,4 +1,4 @@
-def call(string responsedata)
+def call(def responsedata)
 {   
     println responsedata
     def xml = responsedata
@@ -9,5 +9,5 @@ def call(string responsedata)
     // config.Config.Servers.Server.each{
         // println it.@Name
     //println "${env.WORKSPACE}/parameters.xml"
-    }
+    //}
 }
