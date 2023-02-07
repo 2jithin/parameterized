@@ -1,4 +1,3 @@
-import groovy.xml.*
 @Library('xmlparsing@main')_ // _ accept all libraries under vars folder . it should import
 def First_NAME = null
 def response = null
