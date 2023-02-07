@@ -15,8 +15,9 @@ def call(def responsedata)
     def dependencies = config.dependencies.dependency.collect { dep ->
         dep.groupId.text()
   	}
-    def dependencylist = dependencies.each { println "- $it" }
-    println(dependencylist)
+    dependencies.each {
+        println "- $it.value" 
+    }
 
     // ================================================================================
 
