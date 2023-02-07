@@ -1,4 +1,4 @@
-def call(def responsedata)
+def call(string responsedata)
 {   
     println responsedata
     def xml = responsedata

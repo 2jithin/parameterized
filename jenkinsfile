@@ -69,7 +69,6 @@ pipeline {
 
                         // sh "export -p" // shell script not loading
                         //def jenkinsworkspace = readFile('jenkinsworkspace').trim()
-                        echo "${response.content}"
                         pomfileparsing("${response.content}")
                     }
                     catch (Exception ex) {
