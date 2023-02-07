@@ -7,10 +7,11 @@ def call(def responsedata)
     xml = xml.replace("</project>","")
     
     def config = new XmlParser().parseText(xml)
+    println(config)
+    println(xml)
     def dependencies = config.dependencies.dependency.collect { dep ->
         dep.groupId.text()
   	}
-    println "Dependencies groupids:"
     dependencies.each { println "- $it" }
 
     // project.dependencyManagement.dependencies.dependency.each{
