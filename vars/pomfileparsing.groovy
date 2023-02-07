@@ -1,11 +1,12 @@
+import groovy.xml.*
 def call(def responsedata)
 {   
     println " = = = = Parsing Initialized = = = = "
     def xml = responsedata
-    println(xml)
+    
     def config = new XmlParser().parseText(xml)
     def dependencies = config.dependencies.dependency.collect { dep ->
-        "${dep.groupId}"
+        dep.groupId.text()
   	}
     println "Dependencies groupids:"
     dependencies.each { println "- $it" }
