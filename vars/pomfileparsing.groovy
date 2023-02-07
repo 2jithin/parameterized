@@ -7,8 +7,8 @@ def call(def responsedata)
 
     // replacing and removing the namespace things from xml
     xml = xml.replace("""xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd" ""","")
-
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd""","")
+    xml = xml.replace(' "',"")
     println xml    
     // Using parser function parsing the xml
     def config = new XmlParser().parseText(xml)
