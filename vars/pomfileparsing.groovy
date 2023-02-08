@@ -19,9 +19,9 @@ def call(def responsedata)
     resultfile.withWriter { writer ->
         dependencies.each { writer.println " - $it" }
     }
-    dependencies.each {
-        println "- $it.value" 
-    }
+    // dependencies.each {
+    //     println "- $it.value" 
+    // }
 
     // ================================================================================
 
