@@ -12,8 +12,8 @@ def call(def responsedata)
     // Using parser function parsing the xml
     def config = new XmlParser().parseText(xml)
     def dependencies = config.dependencies.dependency.collect { dep ->
-        dep.groupId.text()
-        //"${dep.groupId}"
+        // dep.groupId.text()
+        "${dep.groupId}"
   	}
     dependencies.each {
         println "- $it.value" 
