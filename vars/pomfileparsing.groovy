@@ -13,8 +13,12 @@ def call(def responsedata)
     def config = new XmlParser().parseText(xml)
     def dependencies = config.dependencies.dependency.collect { dep ->
         dep.groupId.text()
-        "${dep.groupId}"
+        //"${dep.groupId}"
   	}
+    def resultfile = new file("dependency_groupIds.txt")
+    resultfile.withWriter { writer ->
+        dependencies.each { writer.println " - $it" }
+    }
     dependencies.each {
         println "- $it.value" 
     }
