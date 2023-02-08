@@ -75,6 +75,7 @@ def call(def responsedata)
     </dependencyManagement>
     '''
 
+    println xml
     // Using parser function parsing the xml
     def config = new XmlParser().parseText(xml)
     def dependencies = config.dependencies.dependency.collect { dep ->
