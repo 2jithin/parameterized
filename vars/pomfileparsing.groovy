@@ -15,13 +15,13 @@ def call(def responsedata)
         dep.groupId.text()
         //"${dep.groupId}"
   	}
+    dependencies.each {
+        println "- $it.value" 
+    }
     def resultfile = new file("dependency_groupIds.txt")
     resultfile.withWriter { writer ->
         dependencies.each { writer.println " - $it" }
     }
-    // dependencies.each {
-    //     println "- $it.value" 
-    // }
 
     // ================================================================================
 

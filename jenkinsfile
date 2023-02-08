@@ -32,7 +32,7 @@ pipeline {
                 // echo "${env.WORKSPACE}"
             }
         }
-        stage('list_files') {
+        stage('List_File_Directory') {
             agent any
             // input { // should not use inside the script or steps
             //     message "Enter the name?"
@@ -60,7 +60,7 @@ pipeline {
                 }
             }
         }
-        stage('parsexml') {
+        stage('Parse_Xml') {
             agent any
             steps {
                 echo '___________________ PARSING STARTED _________________________'
