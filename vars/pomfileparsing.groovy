@@ -75,15 +75,22 @@ def call(def responsedata)
     </dependencyManagement>
     '''
 
-    println xml
     // Using parser function parsing the xml
     def config = new XmlParser().parseText(xml)
-    def dependencies = config.dependencies.dependency.collect { dep ->
-        // dep.groupId.text()
-        "${dep.groupId.text()}"
-  	}
+
+    // dependency value get using as xpath
+    def dependencies = config.'**'.findAll { node ->
+      node.name() == 'groupId'
+    }.collect { node ->
+      node.text()
+    }
+
+    // def dependencies = config.dependency.collect { dep ->
+    //     // dep.groupId.text()
+    //     "${dep.groupId.text()}"
+  	// }
     dependencies.each {
-        println "- $it.value" 
+        println "- $it" 
     }
     // def resultfile = new file("dependency_groupIds.txt")
     // resultfile.withWriter { writer ->
