@@ -84,10 +84,10 @@ def call(def responsedata)
     dependencies.each {
         println "- $it.value" 
     }
-    def resultfile = new file("dependency_groupIds.txt")
-    resultfile.withWriter { writer ->
-        dependencies.each { writer.println " - $it" }
-    }
+    // def resultfile = new file("dependency_groupIds.txt")
+    // resultfile.withWriter { writer ->
+    //     dependencies.each { writer.println " - $it" }
+    // }
 
     // ================================================================================
 
